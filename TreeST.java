@@ -1,4 +1,4 @@
-public class TreeST<Key extends Integer,Value> {
+public class TreeST<Key extends Comparable<Key>,Value> {
     private Node root=null;
     private class Node{
         Node left;
@@ -249,7 +249,7 @@ public class TreeST<Key extends Integer,Value> {
         keys(root, queue, lo, hi);
         return queue;
     } 
-    private void keys(Node x, Queue<Key> queue, Key lo, Key hi) { 
+    private void keys(Node x, Queue<Key> queue, Key lo, Key hi){
         if (x == null) return; 
         int cmplo = lo.compareTo(x.key); 
         int cmphi = hi.compareTo(x.key); 
