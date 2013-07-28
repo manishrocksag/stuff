@@ -1,4 +1,4 @@
-trees
+Trees
 =====
 This is Binary Search Tree Symbol Table API and contains various methods to manipulate symbol table.There are also various methods to query Binary Search Trees.
 
