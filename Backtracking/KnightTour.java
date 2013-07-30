@@ -42,11 +42,5 @@ public class KnightTour {
             }
         }
         return false;
-    }
-    public static void main(String[] args) {
-    KnightTour obj=new KnightTour();
-    obj.solveKnightTour();
-}
-    
-    
+    } 
 }
