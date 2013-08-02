@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Trees
 =====
 This is Binary Search Tree Symbol Table API and contains various methods to manipulate symbol table.There are also various methods to query Binary Search Trees.
@@ -7,7 +6,4 @@ There is also implementation of left leaning RED-BLACK trees which guarantees th
 
 I am also looking forward for the implementation of K-d trees.Any help will be most welcome.
 =======
-graphs
-======
-This Library contains the API of various Graph Processing Algorithms.
->>>>>>> c08fb6045abcd6f502cb1419da0ceef8aab80f3a
+
