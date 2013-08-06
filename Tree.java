@@ -107,5 +107,12 @@ public class Tree {
         return isBST2(x.left,min,x.val)&&isBST2(x.right,x.val,max);
         
          }   
+	public int sumTree(Node x){
+        if(x==null)
+            return 0;
+        int data=x.val;
+        x.val=sumTree(x.left)+sumTree(x.right);
+        	return data+x.val;
+    	}
    }
     
