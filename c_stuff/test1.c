@@ -107,11 +107,40 @@ void print_preorder(struct node* root)
 }
 int has_path_sum(struct node* root,int sum)
 {
-	if(root==null)
+	if(root==null){
 		return sum==0;
-	int subsum;
-	subsum=sum-root->val;
-	return has_path_sum(root->left,subsum)||has_path_sum(root->right,subsum);
+	}
+	else
+	{
+		int subsum = sum - root->val;
+		return ((has_path_sum(root->left,subsum)) || (has_path_sum(root->right,subsum)));
+	}
+}
+void paths(int arr[],int len)
+{
+	int i;
+	for(i=0;i<len;i++)
+		printf("%d\t",arr[i]);
+	printf("\n");
+}
+void print_paths(struct node* root,int arr[],int len)
+{
+	if(root==null)
+		return;
+	arr[len]=root->val;
+	len++;
+	if(root->left==null&&root->right==null)
+		paths(arr,len);
+	else
+	{
+		print_paths(root->left,arr,len);
+		print_paths(root->right,arr,len);
+	}
+}
+void recur_paths(struct node* root)
+{
+	int arr[100];
+	print_paths(root,arr,0);
 }
 
 void main ()
@@ -146,9 +175,11 @@ void main ()
 	print_preorder(root);
 	printf("\n");
 	printf("%d\n",has_path_sum(root,14));
-	printf("%d\n",has_path_sum(root,122));
+	printf("%d\n",has_path_sum(root,12));
 	printf("%d\n",has_path_sum(root,17));
 	printf("%d\n",has_path_sum(root,18));
 	printf("%d\n",has_path_sum(root,45));
+	printf("\n");
+	recur_paths(root);
 
 }
