@@ -105,6 +105,14 @@ void print_preorder(struct node* root)
 	print_preorder(root->right);
 	
 }
+int has_path_sum(struct node* root,int sum)
+{
+	if(root==null)
+		return sum==0;
+	int subsum;
+	subsum=sum-root->val;
+	return has_path_sum(root->left,subsum)||has_path_sum(root->right,subsum);
+}
 
 void main ()
 {
@@ -136,6 +144,11 @@ void main ()
 	printf("\n");
 	printf("pre order \n");
 	print_preorder(root);
-	
+	printf("\n");
+	printf("%d\n",has_path_sum(root,14));
+	printf("%d\n",has_path_sum(root,122));
+	printf("%d\n",has_path_sum(root,17));
+	printf("%d\n",has_path_sum(root,18));
+	printf("%d\n",has_path_sum(root,45));
 
 }
