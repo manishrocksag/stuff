@@ -30,6 +30,7 @@ struct node* insert (struct node *root, int val)
     }
 }
 
+
 void print_in_order (struct node *root)
 {
   if (root == NULL)
@@ -142,6 +143,32 @@ void recur_paths(struct node* root)
 	int arr[100];
 	print_paths(root,arr,0);
 }
+void mirror_tree(struct node* root)
+{
+	if(root==null)
+		return;
+	//printf("Entering with node %d",root->val);
+	mirror_tree(root->left);
+	//printf("Exiting with node %d",root->val);
+	mirror_tree(root->right);
+	
+	struct node* temp=root->left;
+	root->left=root->right;
+	root->right=temp;
+
+}
+void double_tree(struct node* root)
+{
+	struct node* prevLeft;
+	if(root==null)
+		return;
+	double_tree(root->left);
+	double_tree(root->right);
+	
+	prevLeft=root->left;
+	root->left=newNode(root->val);
+	root->left->left=prevLeft;
+}
 
 void main ()
 {
@@ -159,27 +186,35 @@ void main ()
   root = insert (root, 16);
   root = insert (root, 3);
   print_in_order (root);
-  printf("%d",look_up(root,17));
-  printf("%d",look_up(root,-1));
-  printf("\n");
-  printf("%d",size(root));
-  printf("%d",max_depth(root));
-  printf("\n");
-	printf("%d\n",max_value(root));
-	printf("%d",min_value(root));
+  //printf("%d",look_up(root,17));
+  //printf("%d",look_up(root,-1));
+  //printf("\n");
+  //printf("%d",size(root));
+  //printf("%d",max_depth(root));
+  //printf("\n");
+	//printf("%d\n",max_value(root));
+	//printf("%d",min_value(root));
+	//printf("\n");
+	//printf("postorder \n");
+	//print_postorder(root);
+	//printf("\n");
+	//printf("pre order \n");
+	//print_preorder(root);
+	//printf("\n");
+	//printf("%d\n",has_path_sum(root,14));
+	//printf("%d\n",has_path_sum(root,12));
+	//printf("%d\n",has_path_sum(root,17));
+	//printf("%d\n",has_path_sum(root,18));
+	//printf("%d\n",has_path_sum(root,45));
+	//printf("\n");
+	//mirror_tree(root);
+	//printf("\n");
+	//print_in_order(root);
+ ////printf("%p",root);
+// printf("\n");
+// printf("%p",&root);
 	printf("\n");
-	printf("postorder \n");
-	print_postorder(root);
-	printf("\n");
-	printf("pre order \n");
-	print_preorder(root);
-	printf("\n");
-	printf("%d\n",has_path_sum(root,14));
-	printf("%d\n",has_path_sum(root,12));
-	printf("%d\n",has_path_sum(root,17));
-	printf("%d\n",has_path_sum(root,18));
-	printf("%d\n",has_path_sum(root,45));
-	printf("\n");
-	recur_paths(root);
+	double_tree(root);
+	print_in_order(root);
 
 }
