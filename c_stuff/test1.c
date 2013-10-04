@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #define null NULL
+#define INT_MAX 32,767
+#define INT_MIN -32,767
 struct node
 {
   struct node *right;
@@ -28,6 +30,10 @@ struct node* insert (struct node *root, int val)
 	root->right = insert (root->right, val);
       return root;
     }
+}
+int check_function()
+{
+	printf("Hello World \n");
 }
 
 
@@ -181,9 +187,43 @@ int same_tree(struct node* root1,struct node* root2)
 		return 0;
 	return ((root1->val==root2->val)&&same_tree(root1->left,root2->left)&&same_tree(root1->right,root2->right));
 }
+int count_trees(int no_of_nodes)
+{
+	int root;
+	int left,right,count;
+	count=0;
+	if(no_of_nodes<=1)
+	{
+		return 1;
+	}
+	else
+	{
+	
+		for(root=1;root<=no_of_nodes;root++)
+		{
+			left=count_trees(root-1);
+			right=count_trees(no_of_nodes-root);
+			count+=left*right;
+		}
+	}
+	return count;
+}
+int is_bst1(struct node* root)
+{
+	return is_bst_util(root,INT_MIN,INT_MAX);
+}
+int is_bst_util(struct node* root,int min,int max)
+{
+	if(root==null)
+		return 1;
+	if(root->val < min || root->val >max)
+		return -1;
+	return is_bst_util(root->left,min,root->val)&&is_bst_util(root->right,root->val,max);
+}
 	
 void main ()
 {
+	int i;
   /*struct node* x=newNode(4);
      printf("%d",x->val);
      printf("%d",sizeof(struct node));
@@ -234,6 +274,11 @@ void main ()
 	printf("\n");
 	////double_tree(root);
 	//print_in_order(root);
-	printf("%d",same_tree(root,root1));
-
+	//printf("%d",same_tree(root,root1));
+	//for(i=1;i<=20;i++)
+	//{
+		//printf("%d\t",count_trees(i));
+	//}
+	i=check_function(899,89);
+	printf("\n%d",is_bst1(root));
 }
