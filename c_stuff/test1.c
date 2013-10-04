@@ -169,7 +169,19 @@ void double_tree(struct node* root)
 	root->left=newNode(root->val);
 	root->left->left=prevLeft;
 }
-
+int same_tree(struct node* root1,struct node* root2)
+{
+	if(root1==null && root2==null)
+		return 1;
+	if(root1==null&&root2!=null)
+		return 0;
+	if(root1!=null&&root2==null)
+		return 0;
+	if(root1->val!=root2->val)
+		return 0;
+	return ((root1->val==root2->val)&&same_tree(root1->left,root2->left)&&same_tree(root1->right,root2->right));
+}
+	
 void main ()
 {
   /*struct node* x=newNode(4);
@@ -177,15 +189,21 @@ void main ()
      printf("%d",sizeof(struct node));
      printf("%d",sizeof(struct node*)); */
   struct node *root = NULL;
-  root = insert (root, 7);
-  root = insert (root, 5);
-  root = insert (root, 2);
+  root = insert (root, 1);
   root = insert (root, 9);
   root = insert (root, 11);
   root = insert (root, 17);
-  root = insert (root, 16);
-  root = insert (root, 3);
-  print_in_order (root);
+  root = insert (root, 20);
+  root = insert (root, 23);
+ struct node* root2=null;
+ struct node *root1 = NULL;
+  root1 = insert (root1, 1);
+  root1 = insert (root1, 9);
+  root1 = insert (root1, 11);
+  root1 = insert (root1, 17);
+  root1 = insert (root1, 20);
+  root1 = insert (root1, 23);
+ // print_in_order (root1);
   //printf("%d",look_up(root,17));
   //printf("%d",look_up(root,-1));
   //printf("\n");
@@ -214,7 +232,8 @@ void main ()
 // printf("\n");
 // printf("%p",&root);
 	printf("\n");
-	double_tree(root);
-	print_in_order(root);
+	////double_tree(root);
+	//print_in_order(root);
+	printf("%d",same_tree(root,root1));
 
 }
