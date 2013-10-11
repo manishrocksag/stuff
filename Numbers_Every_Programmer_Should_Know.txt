@@ -1,0 +1,67 @@
+Jeff Dean , a famous Google engineer, popularized a list of latency numbers everyone should know. The list is a great resource for designing large scale infrastructure systems.
+
+Algorithms and their complexity often occur in critical parts of computer systems, but I find that few engineers have a good understanding of how a O(n!) algorithm compares to a O(n5) one.
+
+In the coding contest world, competitors think about these tradeoffs all the time. No wonder, there's a set of numbers every algorithm designer should know.
+
+The table below shows the limits that can be reached in a few seconds by algorithms of different complexities, n being the input size. I've added some algorithms and data structure examples for each complexity class.
+
+
+
+maximum n 	      complexity	     algorithms	data structures
+
+1,000,000,000 
+and higher	       log n, sqrt n	         binary search, ternary 								    search,   fast 									    exponentiation						   				 
+
+ 
+
+10,000,000	      n,n log log n, n log* n	set intersection, 									Eratosthenes sieve, 									radix sort, KMP, 									topological sort, 									Euler tour, strongly 									connected components, 								2sat	disjoint sets, 									tries, hash_map, 									rolling hash deque
+
+
+
+1,000,000		n log n				sorting, divide and 									conquer, sweep line, 									Kruskal, Dijkstra									segment trees, range 									trees, heaps, treaps, 								binary indexed trees, 								suffix arrays
+
+
+
+100,000-        n1**585, n sqrt n
+50,000	     nlog2n				divide and conquer									2d range trees	     									Karatsuba, square 									root trick	two level 									tree
+
+
+
+1000 - 10,000	 n**2					largest empty 										rectangle, Dijkstra, 									Prim (on dense 										graphs)	
+
+
+ 
+300-500	   	 n**3					all pairs shortest 									paths, largest sum 									submatrix, naive 									matrix 											multiplication, 										matrix chain 										multiplication, 										gaussian elimination, 								network flow	
+
+
+ 
+30-50	n4,       n**5, n**6	
+
+ 	 
+25 - 40	    3**n/2, 2**n/2	          meet in the middle								    hash tables (for set 								     intersection)
+
+
+
+15 - 24	  	2**n					subset enumeration, 									brute force, dynamic 									programming with 									exponential states	
+
+
+ 
+15 - 20	    n**2*2**n	                 dynamic programming 										with exponential 								states	bitsets, 										hash_map
+
+
+
+13-17			3**n					dynamic programming 									with exponential 									states	hash_map 									(to store the states)
+
+
+
+11			n!					brute force, 											backtracking, 									next_permutation	 
+
+
+
+8			n**n	                     brute force, 										cartesian product	
+
+
+
+ 
+These numbers aren't very precise, they assume in memory operations and some varying constant factors, but they do give a good starting point in your search for a solution that fits your problem and your data size.
