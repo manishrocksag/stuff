@@ -275,7 +275,7 @@ void main ()
 	////double_tree(root);
 	//print_in_order(root);
 	//printf("%d",same_tree(root,root1));
-	for(i=1;i<=17;i++)
+	for(i=1;i<=20;i++)
 	{
 		printf("%d\t",count_trees(i));
 	}
