@@ -246,7 +246,16 @@ void main()
 //	headRef=headRef->right;
 //
 //}
-	printf("%d",depth_level(root,0));
+	//printf("%d",depth_level(root,0));
+	//print_ancestors(root,5);
+	root=bintree2list(root);
+while(root!=null)
+{
+	printf("%d",root->val);
+	root=root->right;
+
+}
+	
 }
 	
 

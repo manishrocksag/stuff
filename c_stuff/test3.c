@@ -227,6 +227,9 @@ int lis(struct node* root)
 }
 main()
 {
+
+
+
 }
 
 	
