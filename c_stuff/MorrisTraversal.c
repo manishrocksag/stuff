@@ -1,14 +1,46 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define null NULL
+struct node
+{
+  struct node *right;
+  struct node *left;
+  int val;
+};
+struct node* newNode (int val)
+{
+  struct node *new = (struct node *) malloc (sizeof (struct node));
+  new->left = NULL;
+  new->right = NULL;
+  new->val = val;
+  return new;
+}
+
+struct node* insert (struct node *root, int val)
+{
+  if (root == NULL)
+    return newNode (val);
+  else
+    {
+      if (val <= root->val)
+	root->left = insert (root->left, val);
+      else
+	root->right = insert (root->right, val);
+      return root;
+    }
+}
+
 /* Morris Traversal for inorder */
 
 void inorder_morris_traversal(struct node* root)
 {
 	struct node* current=root;
-	struct node* prev=null;
+	struct node* pre=null;
 	while(root)
 	{
 		if(current->left==null)
 		{
-			printf("%d",current->data);
+			printf("%d",current->val);
 			current=current->right;
 		}
 		else
@@ -26,7 +58,7 @@ void inorder_morris_traversal(struct node* root)
 			else
 			{
 				pre->right=null;
-				printf("%d",current->data)'
+				printf("%d",current->val);
 				current=current->right;
 			}
 		}
@@ -39,7 +71,7 @@ void morrisTraversalPreorder(struct node* root)
     {
         if (root->left == NULL)
         {
-            printf( "%d ", root->data );
+            printf( "%d ", root->val );
             root = root->right;
         }
         else
@@ -55,10 +87,22 @@ void morrisTraversalPreorder(struct node* root)
  
             else
             {
-                printf("%d ", root->data);
+                printf("%d ", root->val);
                 current->right = root;
                 root = root->left;
             }
         }
     }
+}
+void main ()
+{
+  struct node *root = NULL;
+  root = insert (root, 9);
+  root = insert (root, 7);
+  root = insert (root, 6);
+  root = insert (root, 17);
+  root = insert (root, 20);
+	morrisTraversalPreorder(root);
+ 
+
 }
