@@ -121,15 +121,84 @@ int get_max_width(struct node* root)
 	fill_count_array(root,level,count);
 	return get_max(count,height);
 }
+/* Inorder Successor in Binary Search Tree */
+struct node* min(struct node* root)
+{
+	while(root->left)
+		root=root->left;
+return root;
+}
+
+struct node* _inorderSuccessor(struct node* root,struct node* node)
+{
+	if(root==null)
+		return null;
+	if(node->right)
+		return min(node->right);
+	struct node* succ=null;
+	while(root)
+	{
+		if(root->val>node->val)
+		{
+			succ=root;
+			root=root->left;	
+		}
+		else if(node->val>root->val)
+			root=root->right;
+		else
+			break;
+	}
+	return succ;
+}
+
+/* Sorted order printing of a given array that represents a BST */
+
+void printSorted(int arr[], int start, int end)
+{     
+  if(start > end)
+    return;
+
+  // print left subtree
+  printSorted(arr, start*2 + 1, end);
+
+  // print root
+  printf("%d  ", arr[start]);
+
+  // print right subtree
+  printSorted(arr, start*2 + 2, end);  
+}
+/* max sum from root to leaf path */
+ 
+void max_sum_leafPath(struct node* root,int* max_sum,int sum)
+{
+	if(root==null)
+		return;
+	sum=sum+root->val;
+	if(root->left==null && root->right==null)
+	{
+		if(sum > *max_sum)
+		{
+			*max_sum=sum;
+		}
+	}
+	max_sum_leafPath(root->left,max_sum,sum);
+	max_sum_leafPath(root->right,max_sum,sum);
+}
+			
 void main()
 {
 	struct node *root = NULL;
-  root = insert (root, 19);
-  root = insert (root, 8);
-  root = insert (root, 25);
-  root = insert (root, 7);;
-  root = insert (root, 9);
   root = insert (root, 20);
-  root = insert (root, 30);
-	printf("%d",get_width(root));
+  root = insert (root, 8);
+  root = insert (root, 22);
+  root = insert (root, 4);;
+  root = insert (root, 12);
+  root = insert (root, 10);
+  struct node* temp=newNode(10);
+
+	//printf("%d",get_width(root));
+	int max_sum=0;
+//struct node* tem=_inorderSuccessor(root,temp);
+max_sum_leafPath(root,&max_sum,0);
+printf("%d",max_sum);
 }

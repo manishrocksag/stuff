@@ -94,6 +94,19 @@ void morrisTraversalPreorder(struct node* root)
         }
     }
 }
+/* Print nodes at k distance from root   */
+
+void _print_nodes(struct node* root,int k)
+{
+	if(root==null)
+		return;
+	if(k==0)
+		printf("%d",root->val);
+
+	_print_nodes(root->left,k-1);
+	_print_nodes(root->right,k-1);
+
+}
 void main ()
 {
   struct node *root = NULL;
@@ -102,7 +115,7 @@ void main ()
   root = insert (root, 6);
   root = insert (root, 17);
   root = insert (root, 20);
-	morrisTraversalPreorder(root);
+	_print_nodes(root,2);
  
 
 }
