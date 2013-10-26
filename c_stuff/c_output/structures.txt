@@ -1,0 +1,233 @@
+
+1)	struct value
+	{
+		int bit1:2;
+		int bit3:4;
+		int bit4:4;
+	}bit={1,2,2};
+	printf("\n %d %d %d",bit.bit1,bit.bit3,bit.bit4);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+o/p:1 2 2
+
+2)	enum value{VAL1=0,VAL2,VAL3,VAL4,VAL5}var;
+   	printf("%d",sizeof(var));
+op:4
+
+
+3)	enum days{MON=-1,TUE,WED=55,THU,FRI,SAT};
+	printf("%d %d %d %d %d %d",MON,TUE,WED,THU,FRI,SAT);
+o/p:-1 0 55 56 57 58
+
+
+
+4)	void main()
+	{
+		union var
+		{
+			int a,b;
+
+		 };
+		 union var v;
+		 v.a=80;
+		 v.b=100;
+       		printf("%d",v.a);
+  	 }
+o/p:100
+
+
+
+
+
+
+6)	struct byte
+	{
+		int one:1;
+	};
+	struct byte var={1};
+	printf("%d",var.one);
+o/p:-1
+
+
+
+
+7)	enum status{pass,fail,atkt};
+	enum status stud1,stud2,stud3;
+	stud1=pass;
+	stud2=atkt;
+	stud3=fail;
+	printf("\n %d %d %d",stud1,stud2,stud3);
+
+
+op:0 2 1
+
+8)	int i=4,j=8;
+   printf("%d %d %d ",i|j&j|i,i|j&&j|i,i^j);
+
+
+o/p:12 1 12
+
+
+
+
+
+10)	struct course
+	{
+		int courseno;
+		char coursename[25];
+	 };
+void main()
+{
+	struct course c[]={
+		{102,"Thermal"},{103,"Manufacturing"},{104,
+"Design"}
+			 };
+	printf("%d",c[1].courseno);
+   printf("%s",(*(c+2)).coursename);
+}
+o/p:103 Design
+	
+
+
+
+
+
+12)	void main()
+{
+	struct address
+	{
+	char phone[15];
+	char city[25];
+	int pin;
+	 };
+	 struct emp
+	 {
+		char name[25];
+		struct address a;
+	 };
+	 struct emp e={"jeru","2344","kerala",55};
+	 printf("\n name=%s phone=%s",e.name,e.a.phone);
+	 printf("\n city=%s pin=%d",e.a.city,e.a.pin);
+}
+o/p: name=jeru phone=2344 city= kerela pin=55
+
+13)	struct book
+{
+	char name[25];
+	char author[25];
+	int no;
+};
+void display(struct book *);
+void main()
+{
+	struct book b1={"Let us C","YPK",101};
+	display(&b1);
+}
+void display(struct book *b)
+{
+	printf("\n %s %s %d",b->name,b->author,b->no);
+}
+
+
+o/p:Let us C YPK 101
+
+14)	void main()
+{
+	struct sample
+	{
+		int num;
+		char m1[50];
+		char m2[50];
+	}m;
+	m.num=1;
+	strcpy(m.m1,"i love India");
+	strcpy(m.m2,"We are Indians");
+	printf("\n %u %u %u",&m.num,m.m1,m.m2);
+}
+
+
+
+
+16)	void main()
+{
+	struct sample
+	{
+		int a:3;
+		int b:2;
+		unsigned int c:3;
+	};
+	struct sample s;
+	s.a=-2;
+	s.b=1;
+	s.c=3;
+	printf("\nThe value of a is %d",s.a);
+	printf("\nThe value of b is %d",s.b);
+	printf("\nThe value of c is %d",s.c);
+
+	s.a=2;
+	s.b=0;
+	s.c=5;
+	printf("\nThe value of a is %d",s.a);
+	printf("\nThe value of b is %d",s.b);
+	printf("\nThe value of c is %d",s.c);
+
+	printf("\n Total size of the structure sample is %d",sizeof(s));
+}
+
+o/p::
+The value of a is -2
+The value of b is 1
+The value of c is 3
+The value of a is 2
+The value of b is 0 
+The value of c is 5
+Total size of the structure sample is 4.
+
+
+
+
+
+18) Point out if there is any error in the program
+	void main()
+	{
+	struct employee
+	{
+		char name[25];
+		int age;
+		float bs;
+	 };
+	 struct employee e;
+	 strcpy(e.name,"Hacker");
+	 age=25;
+	 printf("\n %s %d",e.name,e.age);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
